@@ -18,7 +18,7 @@ const db = new MoviesDB();
 
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const HTTP_PORT = process.env.PORT || 8080;
 
 //middleware
 app.use(cors());
@@ -100,3 +100,4 @@ db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
 }).catch((err)=>{
     console.log(err);
 });
+
