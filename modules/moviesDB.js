@@ -95,3 +95,5 @@ module.exports = class MoviesDB {
     return this.Movie.deleteOne({ _id: id }).exec();
   }
 }
+
+module.exports = {}
