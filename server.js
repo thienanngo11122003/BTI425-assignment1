@@ -29,6 +29,14 @@ app.get('/', (req, res) => {
     res.json({message: "API Listening"});
 });
 
+db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
+    app.listen(HTTP_PORT, ()=>{
+        console.log(`server listening on: ${HTTP_PORT}`);
+    });
+}).catch((err)=>{
+    console.log(err);
+});
+
 
 app.post('/api/movies', (req, res) => {
     try {
@@ -92,12 +100,3 @@ app.delete('/api/movies/:id', (req, res) => {
         res.status.json({err: 'Internal Server Error.'});
     }
 })
-
-db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
-    app.listen(HTTP_PORT, ()=>{
-        console.log(`server listening on: ${HTTP_PORT}`);
-    });
-}).catch((err)=>{
-    console.log(err);
-});
-
